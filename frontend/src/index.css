@@ -1,0 +1,32 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: sans-serif;
+
+  background:
+  linear-gradient(
+    to bottom,
+    #ffffff,
+    #f8fafc
+  );
+
+  color: #111111;
+
+  overflow-x: hidden;
+
+  background-image:
+radial-gradient(
+  rgba(15, 23, 42, 0.03) 1px,
+  transparent 1px
+);
+
+background-size: 30px 30px;
+}
