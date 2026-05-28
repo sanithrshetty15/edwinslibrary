@@ -31,6 +31,8 @@ import Loader from "./components/Loader"
 import LabShowcase from "./components/LabShowcase"
 
 import LabSection from "./components/LabSection"
+
+import CyberFeatures from "./components/CyberFeatures"
 function App() {
 
   return (
@@ -63,6 +65,8 @@ function App() {
       <AISection />
 
       <QRSection />
+
+      <CyberFeatures />
 
       <Testimonials />
 
