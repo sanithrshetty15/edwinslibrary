@@ -470,7 +470,6 @@ function DashboardSection() {
 
                     className="
                       flex-1
-
                       rounded-full
 
                       bg-primary

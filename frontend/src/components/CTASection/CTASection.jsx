@@ -5,6 +5,10 @@ import {
   Sparkles,
 } from "lucide-react"
 
+
+import Reveal from "../Reveal"
+
+
 function CTASection() {
 
   return (
@@ -60,6 +64,8 @@ function CTASection() {
           bg-[size:90px_90px]
         "
       />
+       
+      <Reveal>
 
       <div
         className="
@@ -342,6 +348,7 @@ function CTASection() {
 
       </div>
 
+    </Reveal>
     </section>
   )
 }

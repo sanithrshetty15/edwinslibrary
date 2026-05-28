@@ -26,11 +26,18 @@ import ScrollProgress from "./components/ScrollProgress"
 
 import MagneticButton from "./components/MagneticButton"
 
+import Loader from "./components/Loader"
+
+import LabShowcase from "./components/LabShowcase"
+
+import LabSection from "./components/LabSection"
 function App() {
 
   return (
 
     <main>
+      <Loader />
+      
       <ScrollProgress />
 
       <SmoothScroll /> 
@@ -48,6 +55,10 @@ function App() {
       <StorySection />
 
       <DashboardSection />
+
+      {/* <LabShowcase /> */}
+
+      <LabSection />
 
       <AISection />
 

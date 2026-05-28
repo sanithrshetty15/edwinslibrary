@@ -77,7 +77,7 @@ function FeatureCarousel() {
 
   return (
 
-    <section
+    <section id="features"
       className="
         relative
 

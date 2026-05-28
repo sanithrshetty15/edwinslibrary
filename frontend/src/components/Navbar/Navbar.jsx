@@ -1,109 +1,338 @@
-import { motion } from "framer-motion"
+import { useState } from "react"
+
+import {
+  Menu,
+  X,
+} from "lucide-react"
 
 function Navbar() {
 
+  const [menuOpen, setMenuOpen] = useState(false)
+
   const navLinks = [
-    "Features",
-    "Dashboard",
-    "AI System",
-    "Contact"
+
+    {
+      name: "Home",
+      path: "#home",
+    },
+
+    {
+      name: "Features",
+      path: "#features",
+    },
+
+    {
+      name: "About",
+      path: "#about",
+    },
+
+    {
+      name: "Contact",
+      path: "#contact",
+    },
   ]
 
   return (
 
-    <motion.header
+    <>
 
-      initial={{
-        y: -80,
-        opacity: 0
-      }}
+      {/* NAVBAR */}
 
-      animate={{
-        y: 0,
-        opacity: 1
-      }}
-
-      transition={{
-        duration: 1,
-        ease: "easeOut"
-      }}
-
-      className="fixed top-5 left-0 w-full z-50"
-    >
-
-      <nav
+      <header
         className="
-          max-w-7xl
-          mx-auto
-          w-[92%]
+          fixed
+          top-0
+          left-0
 
-          h-[74px]
+          w-full
 
-          px-8
-
-          flex
-          items-center
-          justify-between
-
-          rounded-full
-
-          bg-black/70
-
-          backdrop-blur-xl
-
-          border
-          border-white/10
-
-          shadow-[0_10px_40px_rgba(0,0,0,0.12)]
+          z-[9999]
         "
       >
 
-        {/* LOGO */}
-
-        <div
+        <nav
           className="
-            text-white
-            text-[28px]
-            font-orbitron
-            font-semibold
-            tracking-[-1px]
-            cursor-pointer
+            max-w-7xl
+            w-[92%]
+
+            mx-auto
+            mt-5
+
+            h-[72px]
+
+            px-6
+
+            rounded-full
+
+            border
+            border-primary/10
+
+            bg-black/55
+            supports-[backdrop-filter]:bg-black/40
+
+            backdrop-blur-2xl
+            backdrop-saturate-150
+
+            shadow-[0_10px_40px_rgba(0,0,0,0.18)]
+
+            flex
+            items-center
+            justify-between
           "
         >
 
-          Edwin’s{" "}
+          {/* LOGO */}
 
-          <span className="text-primary">
-            Library
-          </span>
+          <a
+            href="#home"
+
+            className="
+              font-orbitron
+              font-semibold
+
+              text-[24px]
+
+              tracking-[-1px]
+
+              text-white
+            "
+          >
+
+            Edwin’s{" "}
+
+            <span className="text-primary">
+              Library
+            </span>
+
+          </a>
+
+          {/* DESKTOP LINKS */}
+
+          <div
+            className="
+              hidden
+              md:flex
+
+              items-center
+              gap-10
+            "
+          >
+
+            {navLinks.map((item, index) => (
+
+              <a
+
+                key={index}
+
+                href={item.path}
+
+                className="
+                  text-[17px]
+
+                  font-medium
+
+                  text-white/75
+
+                  transition-all
+                  duration-300
+
+                  hover:text-primary
+                "
+              >
+
+                {item.name}
+
+              </a>
+
+            ))}
+
+          </div>
+
+          {/* MOBILE BUTTON */}
+
+          <button
+
+            onClick={() => setMenuOpen(true)}
+
+            className="
+              md:hidden
+
+              w-11
+              h-11
+
+              rounded-full
+
+              border
+              border-white/10
+
+              text-white
+
+              flex
+              items-center
+              justify-center
+            "
+          >
+
+            <Menu size={22} />
+
+          </button>
+
+        </nav>
+
+      </header>
+
+      {/* MOBILE MENU */}
+
+      <div
+        className={`
+          fixed
+          inset-0
+
+          z-[99999]
+
+          bg-[#050505]
+
+          transition-all
+          duration-500
+
+          ${
+            menuOpen
+              ? "translate-x-0 opacity-100"
+              : "translate-x-full opacity-0 pointer-events-none"
+          }
+        `}
+      >
+
+        {/* GRID EFFECT */}
+
+        <div
+          className="
+            absolute
+            inset-0
+
+            opacity-[0.03]
+
+            bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]
+
+            bg-[size:60px_60px]
+          "
+        />
+
+        {/* GREEN GLOW */}
+
+        <div
+          className="
+            absolute
+
+            top-[-120px]
+            left-1/2
+
+            -translate-x-1/2
+
+            w-[320px]
+            h-[320px]
+
+            rounded-full
+
+            bg-primary/20
+
+            blur-[100px]
+          "
+        />
+
+        {/* TOP */}
+
+        <div
+          className="
+            relative
+
+            flex
+            items-center
+            justify-between
+
+            px-6
+            pt-8
+          "
+        >
+
+          <h1
+            className="
+              font-orbitron
+              font-semibold
+
+              text-[24px]
+
+              text-white
+            "
+          >
+
+            Edwin’s{" "}
+
+            <span className="text-primary">
+              Library
+            </span>
+
+          </h1>
+
+          <button
+
+            onClick={() => setMenuOpen(false)}
+
+            className="
+              w-11
+              h-11
+
+              rounded-full
+
+              border
+              border-white/10
+
+              text-primary
+
+              flex
+              items-center
+              justify-center
+            "
+          >
+
+            <X size={22} />
+
+          </button>
 
         </div>
 
-        {/* NAV LINKS */}
+        {/* MOBILE LINKS */}
 
         <div
           className="
-            hidden
-            md:flex
-            items-center
-            gap-10
+            relative
+
+            mt-24
+
+            px-6
+
+            flex
+            flex-col
+            gap-8
           "
         >
 
-          {navLinks.map((link, index) => (
+          {navLinks.map((item, index) => (
 
             <a
+
               key={index}
 
-              href="#"
+              href={item.path}
+
+              onClick={() => setMenuOpen(false)}
 
               className="
-                relative
+                text-[32px]
 
-                text-white/80
+                font-semibold
 
-                text-[15px]
-                font-medium
+                text-white/90
 
                 transition-all
                 duration-300
@@ -112,28 +341,7 @@ function Navbar() {
               "
             >
 
-              {link}
-
-              <span
-                className="
-                  absolute
-
-                  left-0
-                  -bottom-2
-
-                  h-[2px]
-                  w-0
-
-                  rounded-full
-
-                  bg-primary
-
-                  transition-all
-                  duration-300
-
-                  hover:w-full
-                "
-              />
+              {item.name}
 
             </a>
 
@@ -141,42 +349,9 @@ function Navbar() {
 
         </div>
 
-        {/* CTA BUTTON */}
+      </div>
 
-        <button
-          className="
-            hidden
-            md:flex
-
-            items-center
-            justify-center
-
-            h-[44px]
-            px-6
-
-            rounded-full
-
-            bg-primary
-
-            text-black
-            text-sm
-            font-semibold
-
-            transition-all
-            duration-300
-
-            hover:bg-white
-            hover:-translate-y-[2px]
-          "
-        >
-
-          Get Started
-
-        </button>
-
-      </nav>
-
-    </motion.header>
+    </>
   )
 }
 

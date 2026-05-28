@@ -5,25 +5,50 @@ import {
   ArrowUpRight,
 } from "lucide-react"
 
-import { GiPenguin } from "react-icons/gi"
+import PenguinLogo from "../../assets/logo.png"
 
 function Footer() {
 
   const links = [
-    "Features",
-    "Dashboard",
-    "AI System",
-    "Analytics",
-    "Contact",
+
+    {
+      name: "Features",
+      path: "#features",
+    },
+
+    {
+      name: "Dashboard",
+      path: "#dashboard",
+    },
+
+    {
+      name: "AI System",
+      path: "#ai",
+    },
+
+    {
+      name: "Analytics",
+      path: "#analytics",
+    },
+
+    {
+      name: "Contact",
+      path: "#contact",
+    },
   ]
 
   return (
 
     <footer
+
+      id="contact"
+
       className="
         relative
         overflow-hidden
+
         bg-[#050505]
+
         border-t
         border-white/5
       "
@@ -36,13 +61,34 @@ function Footer() {
           absolute
           bottom-[-250px]
           left-1/2
+
           -translate-x-1/2
+
           w-[700px]
           h-[700px]
+
           rounded-full
+
           bg-primary/10
+
           blur-[180px]
+
           pointer-events-none
+        "
+      />
+
+      {/* GRID EFFECT */}
+
+      <div
+        className="
+          absolute
+          inset-0
+
+          opacity-[0.03]
+
+          bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]
+
+          bg-[size:70px_70px]
         "
       />
 
@@ -50,123 +96,144 @@ function Footer() {
         className="
           relative
           z-10
+
           max-w-7xl
           w-[92%]
+
           mx-auto
+
           pt-28
           pb-14
         "
       >
 
-        {/* TOP */}
+        {/* TOP SECTION */}
 
         <div
           className="
             grid
             grid-cols-1
             lg:grid-cols-2
+
             gap-20
           "
         >
 
-          {/* LEFT */}
+          {/* LEFT SIDE */}
 
           <div>
 
+            {/* BRAND */}
+
             <div
-  className="
-    group
+              className="
+                group
 
-    flex
-    items-center
-    gap-4
+                flex
+                items-center
+                gap-5
+              "
+            >
 
-    cursor-pointer
-  "
->
+              {/* LOGO */}
 
-  {/* PENGUIN ICON */}
+              <div
+                className="
+                  w-16
+                  h-16
 
-  <div
-  className="
-    animate-[float_4s_ease-in-out_infinite]
+                  rounded-2xl
 
-    w-14
-    h-14
+                  bg-white
 
-    rounded-2xl
+                  flex
+                  items-center
+                  justify-center
 
-    bg-primary
+                  overflow-hidden
 
-    flex
-    items-center
-    justify-center
+                  shadow-[0_10px_30px_rgba(155,233,49,0.25)]
 
-    text-black
+                  transition-all
+                  duration-500
 
-    transition-all
-    duration-500
+                  group-hover:scale-110
+                  group-hover:rotate-3
+                  group-hover:bg-primary
+                "
+              >
 
-    group-hover:rotate-[12deg]
-    group-hover:scale-110
-  "
->
+                <img
+                  src={PenguinLogo}
 
-    <GiPenguin size={30} />
+                  alt="Penguin Logo"
 
-  </div>
+                  className="
+                    w-full
+                    h-full
 
-  {/* TEXT */}
+                    object-contain
 
-  <h2
-    className="
-      font-orbitron
-      font-semibold
+                    mix-blend-multiply
+                  "
+                />
 
-      text-[40px]
+              </div>
 
-      tracking-[-2px]
+              {/* TEXT */}
 
-      text-white
+              <h2
+                className="
+                  font-orbitron
+                  font-semibold
 
-      transition-all
-      duration-300
+                  text-[40px]
 
-      group-hover:text-primary
-    "
-  >
+                  tracking-[-2px]
 
-    Edwin’s{" "}
+                  text-white
+                "
+              >
 
-    <span className="text-primary">
-      Library
-    </span>
+                Edwin’s{" "}
 
-  </h2>
+                <span className="text-primary">
+                  Library
+                </span>
 
-</div>
+              </h2>
+
+            </div>
+
+            {/* DESCRIPTION */}
 
             <p
               className="
                 mt-8
+
                 max-w-lg
+
                 text-[16px]
+
                 leading-[2]
+
                 text-white/60
               "
             >
 
               Reimagining traditional libraries through
               intelligent automation, AI-powered systems,
-              seamless QR borrowing, and futuristic student experiences.
+              seamless QR borrowing, and futuristic
+              student experiences.
 
             </p>
 
-            {/* SOCIALS */}
+            {/* SOCIAL ICONS */}
 
             <div
               className="
                 mt-10
+
                 flex
                 items-center
                 gap-5
@@ -189,19 +256,27 @@ function Footer() {
                   className="
                     w-12
                     h-12
+
                     rounded-full
+
                     bg-white/[0.04]
+
                     border
                     border-white/10
+
                     flex
                     items-center
                     justify-center
+
                     text-white/70
+
                     transition-all
                     duration-300
+
                     hover:bg-primary
                     hover:text-black
                     hover:-translate-y-[2px]
+
                     cursor-pointer
                   "
                 >
@@ -216,13 +291,14 @@ function Footer() {
 
           </div>
 
-          {/* RIGHT */}
+          {/* RIGHT SIDE */}
 
           <div
             className="
               grid
               grid-cols-2
               sm:grid-cols-3
+
               gap-10
             "
           >
@@ -245,6 +321,7 @@ function Footer() {
               <div
                 className="
                   mt-6
+
                   space-y-4
                 "
               >
@@ -255,20 +332,23 @@ function Footer() {
 
                     key={index}
 
-                    href="#"
+                    href={link.path}
 
                     className="
                       flex
                       items-center
                       gap-2
+
                       text-white/60
+
                       transition-all
                       duration-300
+
                       hover:text-primary
                     "
                   >
 
-                    {link}
+                    {link.name}
 
                     <ArrowUpRight size={14} />
 
@@ -298,7 +378,9 @@ function Footer() {
               <div
                 className="
                   mt-6
+
                   space-y-4
+
                   text-white/60
                 "
               >
@@ -333,7 +415,9 @@ function Footer() {
               <div
                 className="
                   mt-6
+
                   space-y-4
+
                   text-white/60
                 "
               >
@@ -358,13 +442,17 @@ function Footer() {
           className="
             mt-24
             pt-8
+
             border-t
             border-white/5
+
             flex
             flex-col
             sm:flex-row
+
             items-center
             justify-between
+
             gap-6
           "
         >
@@ -372,6 +460,7 @@ function Footer() {
           <p
             className="
               text-sm
+
               text-white/40
             "
           >
@@ -383,6 +472,7 @@ function Footer() {
           <p
             className="
               text-sm
+
               text-white/40
             "
           >

@@ -35,7 +35,7 @@ function StorySection() {
 
   return (
 
-    <section
+    <section id="about"
       className="
         relative
 

@@ -41,6 +41,7 @@ function QRSection() {
         overflow-hidden
 
         bg-[#0a0a0a]
+
       "
     >
 

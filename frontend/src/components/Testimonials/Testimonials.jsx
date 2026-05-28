@@ -7,6 +7,8 @@ import {
   Building2,
 } from "lucide-react"
 
+import Reveal from "../Reveal"
+
 function Testimonials() {
 
   const testimonials = [
@@ -88,6 +90,9 @@ function Testimonials() {
           pointer-events-none
         "
       />
+
+      <Reveal>
+
 
       <div
         className="
@@ -479,7 +484,7 @@ function Testimonials() {
         </div>
 
       </div>
-
+    </Reveal>
     </section>
   )
 }

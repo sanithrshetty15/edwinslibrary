@@ -8,11 +8,15 @@ import {
   Play,
 } from "lucide-react"
 
+import Reveal from "../Reveal"
+
+import Parallax from "../Parallax"
+
 function Hero() {
 
   return (
 
-    <section
+    <section id="home"
       className="
         relative
 
@@ -27,6 +31,8 @@ function Hero() {
     >
 
       {/* BACKGROUND GLOW 1 */}
+
+      <Parallax speed={-0.3}>
 
       <div
         className="
@@ -71,7 +77,7 @@ function Hero() {
           pointer-events-none
         "
       />
-
+</Parallax>
       {/* GRID EFFECT */}
 
       <div
@@ -88,7 +94,8 @@ function Hero() {
       />
 
       {/* MAIN CONTENT */}
-
+       
+       <Reveal>
       <div
         className="
           relative
@@ -490,7 +497,7 @@ function Hero() {
         </motion.div>
 
       </div>
-
+    </Reveal>
     </section>
   )
 }
