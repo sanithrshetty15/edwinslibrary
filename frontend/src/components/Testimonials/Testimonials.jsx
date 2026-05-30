@@ -12,7 +12,6 @@ import Reveal from "../Reveal"
 function Testimonials() {
 
   const testimonials = [
-
     {
       name: "Shreekanth Suvarna",
       role: "Edwin's Lab Administrator",
@@ -36,7 +35,6 @@ function Testimonials() {
   ]
 
   const trustItems = [
-
     {
       icon: <ShieldCheck size={22} />,
       title: "Secure Authentication"
@@ -54,16 +52,12 @@ function Testimonials() {
   ]
 
   return (
-
     <section
       className="
         relative
-
         py-40
-
         overflow-hidden
-
-        bg-white
+        bg-black
       "
     >
 
@@ -72,419 +66,332 @@ function Testimonials() {
       <div
         className="
           absolute
-
           top-[100px]
           left-1/2
-
           -translate-x-1/2
-
           w-[600px]
           h-[600px]
-
           rounded-full
-
-          bg-primary/10
-
+          bg-primary/20
           blur-[160px]
-
           pointer-events-none
         "
       />
 
       <Reveal>
 
-
-      <div
-        className="
-          relative
-          z-10
-
-          max-w-7xl
-          w-[92%]
-
-          mx-auto
-        "
-      >
-
-        {/* TOP SECTION */}
-
         <div
           className="
-            text-center
+            relative
+            z-10
+            max-w-7xl
+            w-[92%]
+            mx-auto
           "
         >
 
-          <motion.div
+          {/* TOP SECTION */}
 
-            initial={{
-              opacity: 0,
-              y: 20
-            }}
-
-            whileInView={{
-              opacity: 1,
-              y: 0
-            }}
-
-            transition={{
-              duration: 0.8
-            }}
-
-            viewport={{
-              once: true
-            }}
-
-            className="
-              mb-8
-
-              w-fit
-
-              mx-auto
-
-              px-5
-              py-2.5
-
-              rounded-full
-
-              border
-              border-primary/20
-
-              bg-primary/10
-
-              text-primary
-              text-sm
-              font-medium
-            "
-          >
-
-            Trusted By Modern Institutions
-
-          </motion.div>
-
-          <motion.h2
-
-            initial={{
-              opacity: 0,
-              y: 40
-            }}
-
-            whileInView={{
-              opacity: 1,
-              y: 0
-            }}
-
-            transition={{
-              duration: 1
-            }}
-
-            viewport={{
-              once: true
-            }}
-
-            className="
-              font-orbitron
-              font-semibold
-
-              text-[46px]
-              sm:text-[64px]
-
-              leading-[1.05]
-
-              tracking-[-4px]
-
-              text-black
-            "
-          >
-
-            Built For{" "}
-
-            <span className="text-primary">
-              Future-Ready
-            </span>
-
-            <br />
-
-            Learning Ecosystems
-
-          </motion.h2>
-
-          <motion.p
-
-            initial={{
-              opacity: 0,
-              y: 30
-            }}
-
-            whileInView={{
-              opacity: 1,
-              y: 0
-            }}
-
-            transition={{
-              duration: 1,
-              delay: 0.2
-            }}
-
-            viewport={{
-              once: true
-            }}
-
-            className="
-              mt-8
-
-              max-w-3xl
-
-              mx-auto
-
-              text-[18px]
-
-              leading-[1.9]
-
-              text-gray-medium
-            "
-          >
-
-            Designed for institutions that want to modernize
-            student experiences with intelligent automation,
-            seamless access, and futuristic digital systems.
-
-          </motion.p>
-
-        </div>
-
-        {/* TRUST BADGES */}
-
-        <div
-          className="
-            mt-16
-
-            flex
-            flex-wrap
-            justify-center
-
-            gap-5
-          "
-        >
-
-          {trustItems.map((item, index) => (
+          <div className="text-center">
 
             <motion.div
-
-              key={index}
-
               initial={{
                 opacity: 0,
                 y: 20
               }}
-
               whileInView={{
                 opacity: 1,
                 y: 0
               }}
-
               transition={{
-                duration: 0.8,
-                delay: index * 0.1
+                duration: 0.8
               }}
-
               viewport={{
                 once: true
               }}
-
               className="
-                px-6
-                py-4
-
+                mb-8
+                w-fit
+                mx-auto
+                px-5
+                py-2.5
                 rounded-full
-
-                bg-white/80
-
-                backdrop-blur-xl
-
                 border
-                border-black/5
-
-                shadow-[0_10px_30px_rgba(0,0,0,0.04)]
-
-                flex
-                items-center
-
-                gap-3
+                border-primary/20
+                bg-primary/10
+                text-primary
+                text-sm
+                font-medium
               "
             >
 
-              <div className="text-primary">
-                {item.icon}
-              </div>
-
-              <p
-                className="
-                  text-sm
-
-                  font-medium
-
-                  text-black
-                "
-              >
-
-                {item.title}
-
-              </p>
+              Trusted By Modern Institutions
 
             </motion.div>
 
-          ))}
-
-        </div>
-
-        {/* TESTIMONIAL GRID */}
-
-        <div
-          className="
-            mt-24
-
-            grid
-            grid-cols-1
-            lg:grid-cols-3
-
-            gap-8
-          "
-        >
-
-          {testimonials.map((item, index) => (
-
-            <motion.div
-
-              key={index}
-
+            <motion.h2
               initial={{
                 opacity: 0,
                 y: 40
               }}
-
               whileInView={{
                 opacity: 1,
                 y: 0
               }}
-
               transition={{
-                duration: 0.9,
-                delay: index * 0.12
+                duration: 1
               }}
-
               viewport={{
                 once: true
               }}
-
               className="
-                relative
-
-                p-8
-
-                rounded-[36px]
-
-                bg-white/80
-
-                backdrop-blur-2xl
-
-                border
-                border-black/5
-
-                shadow-[0_15px_45px_rgba(0,0,0,0.05)]
-
-                overflow-hidden
-
-                transition-all
-                duration-500
-
-                hover:-translate-y-2
-                hover:border-primary/20
+                font-orbitron
+                font-semibold
+                text-[46px]
+                sm:text-[64px]
+                leading-[1.05]
+                tracking-[-4px]
+                text-white
               "
             >
 
-              {/* QUOTE ICON */}
+              Built For{" "}
 
-              <div
+              <span className="text-primary">
+                Future-Ready
+              </span>
+
+              <br />
+
+              Learning Ecosystems
+
+            </motion.h2>
+
+            <motion.p
+              initial={{
+                opacity: 0,
+                y: 30
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0
+              }}
+              transition={{
+                duration: 1,
+                delay: 0.2
+              }}
+              viewport={{
+                once: true
+              }}
+              className="
+                mt-8
+                max-w-3xl
+                mx-auto
+                text-[18px]
+                leading-[1.9]
+                text-gray-300
+              "
+            >
+
+              Designed for institutions that want to modernize
+              student experiences with intelligent automation,
+              seamless access, and futuristic digital systems.
+
+            </motion.p>
+
+          </div>
+
+          {/* TRUST BADGES */}
+
+          <div
+            className="
+              mt-16
+              flex
+              flex-wrap
+              justify-center
+              gap-5
+            "
+          >
+
+            {trustItems.map((item, index) => (
+
+              <motion.div
+                key={index}
+                initial={{
+                  opacity: 0,
+                  y: 20
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0
+                }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.1
+                }}
+                viewport={{
+                  once: true
+                }}
                 className="
-                  w-14
-                  h-14
-
-                  rounded-2xl
-
-                  bg-primary/10
-
+                  px-6
+                  py-4
+                  rounded-full
+                  bg-white/5
+                  backdrop-blur-xl
+                  border
+                  border-white/10
                   flex
                   items-center
-                  justify-center
-
-                  text-primary
+                  gap-3
+                  transition-all
+                  duration-300
+                  hover:bg-white/10
                 "
               >
 
-                <Quote size={26} />
-
-              </div>
-
-              {/* REVIEW */}
-
-              <p
-                className="
-                  mt-8
-
-                  text-[16px]
-
-                  leading-[2]
-
-                  text-gray-medium
-                "
-              >
-
-                “{item.review}”
-
-              </p>
-
-              {/* USER */}
-
-              <div className="mt-10">
-
-                <h3
-                  className="
-                    text-[20px]
-
-                    font-semibold
-
-                    text-black
-                  "
-                >
-
-                  {item.name}
-
-                </h3>
+                <div className="text-primary">
+                  {item.icon}
+                </div>
 
                 <p
                   className="
-                    mt-2
-
                     text-sm
+                    font-medium
+                    text-white
+                  "
+                >
+                  {item.title}
+                </p>
 
-                    text-gray-medium
+              </motion.div>
+
+            ))}
+
+          </div>
+
+          {/* TESTIMONIAL GRID */}
+
+          <div
+            className="
+              mt-24
+              grid
+              grid-cols-1
+              lg:grid-cols-3
+              gap-8
+            "
+          >
+
+            {testimonials.map((item, index) => (
+
+              <motion.div
+                key={index}
+                initial={{
+                  opacity: 0,
+                  y: 40
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0
+                }}
+                transition={{
+                  duration: 0.9,
+                  delay: index * 0.12
+                }}
+                viewport={{
+                  once: true
+                }}
+                className="
+                  relative
+                  p-8
+                  rounded-[36px]
+                  bg-white/5
+                  backdrop-blur-2xl
+                  border
+                  border-white/10
+                  shadow-[0_15px_45px_rgba(255,255,255,0.04)]
+                  overflow-hidden
+                  transition-all
+                  duration-500
+                  hover:-translate-y-2
+                  hover:border-primary/40
+                  hover:bg-white/10
+                "
+              >
+
+                {/* QUOTE ICON */}
+
+                <div
+                  className="
+                    w-14
+                    h-14
+                    rounded-2xl
+                    bg-primary/10
+                    flex
+                    items-center
+                    justify-center
+                    text-primary
                   "
                 >
 
-                  {item.role}
+                  <Quote size={26} />
+
+                </div>
+
+                {/* REVIEW */}
+
+                <p
+                  className="
+                    mt-8
+                    text-[16px]
+                    leading-[2]
+                    text-gray-300
+                  "
+                >
+
+                  “{item.review}”
 
                 </p>
 
-              </div>
+                {/* USER */}
 
-            </motion.div>
+                <div className="mt-10">
 
-          ))}
+                  <h3
+                    className="
+                      text-[20px]
+                      font-semibold
+                      text-white
+                    "
+                  >
+
+                    {item.name}
+
+                  </h3>
+
+                  <p
+                    className="
+                      mt-2
+                      text-sm
+                      text-gray-400
+                    "
+                  >
+
+                    {item.role}
+
+                  </p>
+
+                </div>
+
+              </motion.div>
+
+            ))}
+
+          </div>
 
         </div>
 
-      </div>
-    </Reveal>
+      </Reveal>
+
     </section>
   )
 }

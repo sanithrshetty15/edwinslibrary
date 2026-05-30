@@ -1,7 +1,8 @@
 import {
-  Github,
   Linkedin,
   Instagram,
+  Twitter,
+  Mail,
   ArrowUpRight,
 } from "lucide-react"
 
@@ -10,45 +11,58 @@ import PenguinLogo from "../../assets/logo.png"
 function Footer() {
 
   const links = [
-
     {
       name: "Features",
       path: "#features",
     },
-
     {
       name: "Dashboard",
       path: "#dashboard",
     },
-
     {
       name: "AI System",
       path: "#ai",
     },
-
     {
       name: "Analytics",
       path: "#analytics",
     },
-
     {
       name: "Contact",
       path: "#contact",
     },
   ]
 
+  const socialLinks = [
+    {
+      icon: <Linkedin size={20} />,
+      url: "https://www.linkedin.com/company/edwinslab/",
+      label: "LinkedIn",
+    },
+    {
+      icon: <Instagram size={20} />,
+      url: "https://www.instagram.com/edwinslab.ig?igsh=MWlnaGZxZ2l0OWo0cg==",
+      label: "Instagram",
+    },
+    {
+      icon: <Twitter size={20} />,
+      url: "https://x.com/edwinslabs",
+      label: "Twitter",
+    },
+    {
+      icon: <Mail size={20} />,
+      url: "mailto:libraryedwins@gmail.com",
+      label: "Email",
+    },
+  ]
+
   return (
-
     <footer
-
       id="contact"
-
       className="
         relative
         overflow-hidden
-
         bg-[#050505]
-
         border-t
         border-white/5
       "
@@ -61,18 +75,12 @@ function Footer() {
           absolute
           bottom-[-250px]
           left-1/2
-
           -translate-x-1/2
-
           w-[700px]
           h-[700px]
-
           rounded-full
-
           bg-primary/10
-
           blur-[180px]
-
           pointer-events-none
         "
       />
@@ -83,11 +91,8 @@ function Footer() {
         className="
           absolute
           inset-0
-
           opacity-[0.03]
-
           bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]
-
           bg-[size:70px_70px]
         "
       />
@@ -96,12 +101,9 @@ function Footer() {
         className="
           relative
           z-10
-
           max-w-7xl
           w-[92%]
-
           mx-auto
-
           pt-28
           pb-14
         "
@@ -114,7 +116,6 @@ function Footer() {
             grid
             grid-cols-1
             lg:grid-cols-2
-
             gap-20
           "
         >
@@ -128,7 +129,6 @@ function Footer() {
             <div
               className="
                 group
-
                 flex
                 items-center
                 gap-5
@@ -141,22 +141,15 @@ function Footer() {
                 className="
                   w-16
                   h-16
-
                   rounded-2xl
-
                   bg-white
-
                   flex
                   items-center
                   justify-center
-
                   overflow-hidden
-
                   shadow-[0_10px_30px_rgba(155,233,49,0.25)]
-
                   transition-all
                   duration-500
-
                   group-hover:scale-110
                   group-hover:rotate-3
                   group-hover:bg-primary
@@ -165,15 +158,11 @@ function Footer() {
 
                 <img
                   src={PenguinLogo}
-
                   alt="Penguin Logo"
-
                   className="
                     w-full
                     h-full
-
                     object-contain
-
                     mix-blend-multiply
                   "
                 />
@@ -186,11 +175,8 @@ function Footer() {
                 className="
                   font-orbitron
                   font-semibold
-
                   text-[40px]
-
                   tracking-[-2px]
-
                   text-white
                 "
               >
@@ -210,13 +196,9 @@ function Footer() {
             <p
               className="
                 mt-8
-
                 max-w-lg
-
                 text-[16px]
-
                 leading-[2]
-
                 text-white/60
               "
             >
@@ -233,57 +215,43 @@ function Footer() {
             <div
               className="
                 mt-10
-
                 flex
                 items-center
                 gap-5
               "
             >
 
-              {[
+              {socialLinks.map((social, index) => (
 
-                <Github size={20} />,
-
-                <Linkedin size={20} />,
-
-                <Instagram size={20} />,
-              ].map((icon, index) => (
-
-                <div
-
+                <a
                   key={index}
-
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
                   className="
                     w-12
                     h-12
-
                     rounded-full
-
                     bg-white/[0.04]
-
                     border
                     border-white/10
-
                     flex
                     items-center
                     justify-center
-
                     text-white/70
-
                     transition-all
                     duration-300
-
                     hover:bg-primary
                     hover:text-black
                     hover:-translate-y-[2px]
-
                     cursor-pointer
                   "
                 >
 
-                  {icon}
+                  {social.icon}
 
-                </div>
+                </a>
 
               ))}
 
@@ -298,7 +266,6 @@ function Footer() {
               grid
               grid-cols-2
               sm:grid-cols-3
-
               gap-10
             "
           >
@@ -321,7 +288,6 @@ function Footer() {
               <div
                 className="
                   mt-6
-
                   space-y-4
                 "
               >
@@ -329,21 +295,15 @@ function Footer() {
                 {links.map((link, index) => (
 
                   <a
-
                     key={index}
-
                     href={link.path}
-
                     className="
                       flex
                       items-center
                       gap-2
-
                       text-white/60
-
                       transition-all
                       duration-300
-
                       hover:text-primary
                     "
                   >
@@ -378,19 +338,15 @@ function Footer() {
               <div
                 className="
                   mt-6
-
                   space-y-4
-
                   text-white/60
                 "
               >
 
                 <p>AI Recommendations</p>
-
                 <p>Analytics Dashboard</p>
-
                 <p>QR Borrowing</p>
-
+                <p>Edwin's Lab</p>
                 <p>Smart Access</p>
 
               </div>
@@ -415,17 +371,13 @@ function Footer() {
               <div
                 className="
                   mt-6
-
                   space-y-4
-
                   text-white/60
                 "
               >
 
                 <p>Moodbidri, Karnataka</p>
-
                 <p>libraryedwins@gmail.com</p>
-
                 <p>+91 63621 77190</p>
 
               </div>
@@ -442,17 +394,13 @@ function Footer() {
           className="
             mt-24
             pt-8
-
             border-t
             border-white/5
-
             flex
             flex-col
             sm:flex-row
-
             items-center
             justify-between
-
             gap-6
           "
         >
@@ -460,7 +408,6 @@ function Footer() {
           <p
             className="
               text-sm
-
               text-white/40
             "
           >
@@ -472,7 +419,6 @@ function Footer() {
           <p
             className="
               text-sm
-
               text-white/40
             "
           >

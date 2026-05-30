@@ -39,6 +39,7 @@ function DashboardSection() {
   return (
 
     <section
+    id="analytics"
       className="
         relative
 
@@ -344,220 +345,381 @@ function DashboardSection() {
 
         {/* RIGHT DASHBOARD */}
 
-        <motion.div
+<motion.div
+  initial={{
+    opacity: 0,
+    scale: 0.9,
+    y: 40
+  }}
+  whileInView={{
+    opacity: 1,
+    scale: 1,
+    y: 0
+  }}
+  transition={{
+    duration: 1
+  }}
+  viewport={{
+    once: true
+  }}
+  className="relative"
+>
 
-          initial={{
-            opacity: 0,
-            scale: 0.9,
-            y: 40
-          }}
+  <div
+    className="
+      rounded-[40px]
+      overflow-hidden
 
-          whileInView={{
-            opacity: 1,
-            scale: 1,
-            y: 0
-          }}
+      bg-white/90
+      backdrop-blur-xl
 
-          transition={{
-            duration: 1
-          }}
+      border
+      border-black/5
 
-          viewport={{
-            once: true
-          }}
+      shadow-[0_20px_80px_rgba(0,0,0,0.08)]
+    "
+  >
 
-          className="
-            relative
-          "
-        >
+    {/* TOP BAR */}
 
-          {/* MAIN DASHBOARD */}
+    <div
+      className="
+        h-16
 
-          <div
-            className="
-              relative
+        px-6
 
-              rounded-[40px]
+        flex
+        items-center
+        justify-between
 
-              border
-              border-black/5
+        border-b
+        border-black/5
+      "
+    >
 
-              bg-white/80
+      <div className="flex gap-2">
 
-              backdrop-blur-2xl
+        <div className="w-3 h-3 rounded-full bg-red-400" />
 
-              shadow-[0_20px_80px_rgba(0,0,0,0.08)]
+        <div className="w-3 h-3 rounded-full bg-yellow-400" />
 
-              overflow-hidden
-            "
-          >
+        <div className="w-3 h-3 rounded-full bg-green-400" />
 
-            {/* TOP BAR */}
+      </div>
 
-            <div
+      <span
+        className="
+          text-sm
+          text-gray-medium
+        "
+      >
+        Live Dashboard
+      </span>
+
+    </div>
+
+    <div className="p-7">
+
+      {/* HEADER CARD */}
+
+      <div
+        className="
+          rounded-[28px]
+
+          p-6
+
+          bg-gradient-to-r
+          from-primary/15
+          to-primary/5
+        "
+      >
+
+        <div className="flex items-center justify-between">
+
+          <div>
+
+            <p className="text-sm text-gray-medium">
+              Total Books Borrowed
+            </p>
+
+            <h3
               className="
-                h-16
+                mt-2
 
-                border-b
-                border-black/5
+                text-4xl
 
-                flex
-                items-center
-
-                px-6
+                font-orbitron
+                font-semibold
               "
             >
-
-              <div className="flex gap-2">
-
-                <div className="w-3 h-3 rounded-full bg-red-400" />
-
-                <div className="w-3 h-3 rounded-full bg-yellow-400" />
-
-                <div className="w-3 h-3 rounded-full bg-green-400" />
-
-              </div>
-
-            </div>
-
-            {/* CONTENT */}
-
-            <div className="p-8">
-
-              {/* GRAPH */}
-
-              <div
-                className="
-                  h-[240px]
-
-                  rounded-[28px]
-
-                  bg-gradient-to-br
-                  from-primary/20
-                  to-primary/5
-
-                  flex
-                  items-end
-
-                  gap-4
-
-                  p-6
-                "
-              >
-
-                {[40, 70, 55, 90, 75, 100].map((height, index) => (
-
-                  <motion.div
-
-                    key={index}
-
-                    initial={{
-                      height: 0
-                    }}
-
-                    whileInView={{
-                      height: `${height}%`
-                    }}
-
-                    transition={{
-                      duration: 1,
-                      delay: index * 0.1
-                    }}
-
-                    viewport={{
-                      once: true
-                    }}
-
-                    className="
-                      flex-1
-                      rounded-full
-
-                      bg-primary
-                    "
-                  />
-
-                ))}
-
-              </div>
-
-              {/* SMALL CARDS */}
-
-              <div
-                className="
-                  mt-6
-
-                  grid
-                  grid-cols-2
-
-                  gap-5
-                "
-              >
-
-                {[1,2].map((item) => (
-
-                  <div
-                    key={item}
-
-                    className="
-                      p-5
-
-                      rounded-[24px]
-
-                      border
-                      border-black/5
-
-                      bg-gray-soft
-                    "
-                  >
-
-                    <div
-                      className="
-                        w-full
-                        h-3
-
-                        rounded-full
-
-                        bg-primary/20
-                      "
-                    />
-
-                    <div
-                      className="
-                        mt-4
-
-                        w-2/3
-                        h-3
-
-                        rounded-full
-
-                        bg-black/10
-                      "
-                    />
-
-                    <div
-                      className="
-                        mt-3
-
-                        w-1/2
-                        h-3
-
-                        rounded-full
-
-                        bg-black/5
-                      "
-                    />
-
-                  </div>
-
-                ))}
-
-              </div>
-
-            </div>
+              12,540
+            </h3>
 
           </div>
 
-        </motion.div>
+          <div
+            className="
+              px-4
+              py-2
+
+              rounded-full
+
+              bg-primary
+
+              text-white
+              text-sm
+            "
+          >
+            +42%
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* WEEKLY ACTIVITY */}
+
+      <div className="mt-6">
+
+        <div className="flex justify-between mb-4">
+
+          <h4 className="font-semibold">
+            Weekly Activity
+          </h4>
+
+          <span
+            className="
+              text-sm
+              text-primary
+            "
+          >
+            Last 7 Days
+          </span>
+
+        </div>
+
+        <div
+          className="
+            h-[220px]
+
+            rounded-[28px]
+
+            bg-gradient-to-b
+            from-primary/10
+            to-transparent
+
+            flex
+            items-end
+
+            gap-3
+
+            p-6
+          "
+        >
+
+          {[40, 65, 55, 85, 70, 95, 80].map((height, index) => (
+
+            <div
+              key={index}
+              className="
+                flex-1
+
+                flex
+                flex-col
+
+                items-center
+              "
+            >
+
+              <motion.div
+                initial={{
+                  height: 0
+                }}
+                whileInView={{
+                  height: `${height}%`
+                }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.08
+                }}
+                viewport={{
+                  once: true
+                }}
+                className="
+                  w-full
+
+                  rounded-t-3xl
+
+                  bg-primary
+                "
+              />
+
+              <span
+                className="
+                  mt-2
+
+                  text-xs
+
+                  text-gray-medium
+                "
+              >
+                {
+                  ["M","T","W","T","F","S","S"][index]
+                }
+              </span>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </div>
+
+      {/* QUICK METRICS */}
+
+      <div
+        className="
+          mt-6
+
+          grid
+          grid-cols-2
+
+          gap-4
+        "
+      >
+
+        <div
+          className="
+            p-5
+
+            rounded-[24px]
+
+            bg-gray-soft
+
+            border
+            border-black/5
+          "
+        >
+
+          <p className="text-sm text-gray-medium">
+            Active Students
+          </p>
+
+          <h3
+            className="
+              mt-2
+
+              text-2xl
+
+              font-semibold
+            "
+          >
+            4,280
+          </h3>
+
+        </div>
+
+        <div
+          className="
+            p-5
+
+            rounded-[24px]
+
+            bg-gray-soft
+
+            border
+            border-black/5
+          "
+        >
+
+          <p className="text-sm text-gray-medium">
+            Books Returned
+          </p>
+
+          <h3
+            className="
+              mt-2
+
+              text-2xl
+
+              font-semibold
+            "
+          >
+            1,102
+          </h3>
+
+        </div>
+
+        <div
+          className="
+            p-5
+
+            rounded-[24px]
+
+            bg-gray-soft
+
+            border
+            border-black/5
+          "
+        >
+
+          <p className="text-sm text-gray-medium">
+            New Members
+          </p>
+
+          <h3
+            className="
+              mt-2
+
+              text-2xl
+
+              font-semibold
+            "
+          >
+            248
+          </h3>
+
+        </div>
+
+        <div
+          className="
+            p-5
+
+            rounded-[24px]
+
+            bg-gray-soft
+
+            border
+            border-black/5
+          "
+        >
+
+          <p className="text-sm text-gray-medium">
+            Late Returns
+          </p>
+
+          <h3
+            className="
+              mt-2
+
+              text-2xl
+
+              font-semibold
+            "
+          >
+            17
+          </h3>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</motion.div>
 
       </div>
 
