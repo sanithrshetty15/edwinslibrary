@@ -179,7 +179,7 @@ function Loader() {
                 mt-10
 
                 font-orbitron
-                font-semibold
+                font-extrabold
 
                 text-[36px]
                 sm:text-[54px]
@@ -190,10 +190,10 @@ function Loader() {
               "
             >
 
-              Edwin’s{" "}
+              EDWIN'S{" "}
 
               <span className="text-primary">
-                Library
+                LIBRARY
               </span>
 
             </motion.h1>

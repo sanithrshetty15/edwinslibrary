@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
     res.send("Edwin's Library API is running.");
 });
 
-mongoose.connect("mongodb+srv://sanith:Sanith26@cluster0.vkv8gx2.mongodb.net/edwins_library")
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB Connected!!"))
   .catch((err) => console.log(err));
 

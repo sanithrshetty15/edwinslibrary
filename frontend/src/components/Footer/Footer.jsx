@@ -6,7 +6,7 @@ import {
   ArrowUpRight,
 } from "lucide-react"
 
-import PenguinLogo from "../../assets/logo.png"
+import PenguinLogo from "../../assets/penguin-logo.png"
 
 function Footer() {
 
@@ -152,7 +152,7 @@ function Footer() {
                   duration-500
                   group-hover:scale-110
                   group-hover:rotate-3
-                  group-hover:bg-primary
+                  group-hover:bg-red-100
                 "
               >
 

@@ -402,6 +402,7 @@ const approveStudent = async (req, res) => {
     // Send approval email
     await sendEmail(
       student.email,
+      
       "Welcome to Edwin's Library",
 
       `
@@ -409,7 +410,7 @@ const approveStudent = async (req, res) => {
         font-family: Arial, sans-serif;
         background: #000000;
         padding: 40px;
-        color: #00ff88;
+        color: #9be931;
       ">
 
         <div style="
@@ -418,12 +419,12 @@ const approveStudent = async (req, res) => {
           margin: auto;
           border-radius: 12px;
           overflow: hidden;
-          border: 1px solid #00ff88;
-          box-shadow: 0 0 20px rgba(0,255,136,0.3);
+          border: 1px solid #9be931;
+          box-shadow: 0 0 20px rgba(155, 233, 49, 0.3);
         ">
 
           <div style="
-            background: #00ff88;
+            background: #9be931;
             color: #000000;
             padding: 25px;
             text-align: center;
@@ -441,7 +442,7 @@ const approveStudent = async (req, res) => {
 
             <div style="
               background: #0a0a0a;
-              border: 1px solid #00ff88;
+              border: 1px solid #9be931;
               padding: 20px;
               border-radius: 10px;
               margin-top: 20px;
@@ -490,7 +491,7 @@ const approveStudent = async (req, res) => {
             padding:15px;
             font-size:14px;
             color:#9ca3af;
-            border-top:1px solid #00ff88;
+            border-top:1px solid #9be931;
           ">
             Edwin's Library Management System
           </div>
@@ -594,7 +595,7 @@ const changePassword = async (req, res) => {
         font-family: Arial, sans-serif;
         background: #000000;
         padding: 40px;
-        color: #00ff88;
+        color: #9be931;
       ">
 
         <div style="
@@ -603,12 +604,12 @@ const changePassword = async (req, res) => {
           margin: auto;
           border-radius: 12px;
           overflow: hidden;
-          border: 1px solid #00ff88;
-          box-shadow: 0 0 20px rgba(0,255,136,0.3);
+          border: 1px solid #9be931;
+          box-shadow: 0 0 20px rgba(155, 233, 49, 0.3);
         ">
 
           <div style="
-            background: #00ff88;
+            background: #9be931;
             color: #000000;
             padding: 25px;
             text-align: center;
@@ -626,7 +627,7 @@ const changePassword = async (req, res) => {
 
             <div style="
               background: #0a0a0a;
-              border: 1px solid #00ff88;
+              border: 1px solid #9be931;
               padding: 20px;
               border-radius: 10px;
               margin-top: 20px;
@@ -647,7 +648,7 @@ const changePassword = async (req, res) => {
             padding:15px;
             font-size:14px;
             color:#9ca3af;
-            border-top:1px solid #00ff88;
+            border-top:1px solid #9be931;
           ">
             Edwin's Library Management System
           </div>
@@ -699,7 +700,7 @@ const rejectStudent = async (req, res) => {
         font-family: Arial, sans-serif;
         background: #000000;
         padding: 40px;
-        color: #00ff88;
+        color: #9be931;
       ">
 
         <div style="
@@ -708,12 +709,12 @@ const rejectStudent = async (req, res) => {
           margin: auto;
           border-radius: 12px;
           overflow: hidden;
-          border: 1px solid #00ff88;
-          box-shadow: 0 0 20px rgba(0,255,136,0.3);
+          border: 1px solid #9be931;
+          box-shadow: 0 0 20px rgba(155, 233, 49, 0.3);
         ">
 
           <div style="
-            background: #00ff88;
+            background: #9be931;
             color: #000000;
             padding: 25px;
             text-align: center;
@@ -731,7 +732,7 @@ const rejectStudent = async (req, res) => {
 
             <div style="
               background: #0a0a0a;
-              border: 1px solid #00ff88;
+              border: 1px solid #9be931;
               padding: 20px;
               border-radius: 10px;
               margin-top: 20px;
@@ -757,7 +758,7 @@ const rejectStudent = async (req, res) => {
             padding:15px;
             font-size:14px;
             color:#9ca3af;
-            border-top:1px solid #00ff88;
+            border-top:1px solid #9be931;
           ">
             Edwin's Library Management System
           </div>
