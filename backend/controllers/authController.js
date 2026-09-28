@@ -5,6 +5,9 @@ const sendEmail = require("../utils/sendEmail");
 const Book = require("../models/Book");
 const Issue = require("../models/Issue");
 const BorrowRequest = require("../models/BorrowRequest");
+const libraryEmailTemplate = require("../utils/emailTemplates");
+const cloudinary = require("../config/cloudinary");
+
 let otpStore = {};
 
 const registerUser = async (req, res) => {
@@ -92,14 +95,18 @@ const registerUser = async (req, res) => {
 const loginUser = async (req,res) => {
     const { usn, password } = req.body;
 
-    const user = await User.findOne({ usn });
-    
-    if (!user) {
-      return res.status(400).json({ message: "User not found" });
-    }  
-    
-    const isMatch = await bcrypt.compare(password, user.password);
-    
+   const user = await User.findOne({ usn });
+
+if (!user) {
+  return res.status(400).json({ message: "User not found" });
+}
+if (!user.isApproved) {
+  return res.status(403).json({
+    message: "Your account is not approved by the administrator yet."
+  });
+}
+
+const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
         return res.status(400).json({ message: "Invalid password" });
   }
@@ -170,24 +177,73 @@ const verifyOtp = async (req, res) => {
 }
 
 const addBook = async (req, res) => {
-  const { title, author, quantity, barcode } = req.body;
+  try {
+    const {
+      title,
+      author,
+      quantity,
+      barcode
+    } = req.body;
 
-  const existingBook = await Book.findOne({ barcode });
+    // Check duplicate barcode
+    const existingBook = await Book.findOne({ barcode });
 
-  if (existingBook) {
-  return res.status(400).json({ message: "Book already exists" });
+    if (existingBook) {
+      return res.status(400).json({
+        message: "Book already exists"
+      });
+    }
+
+    let coverImage = "";
+
+    // Upload cover image to Cloudinary
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          {
+            folder: "edwins-library/books",
+            resource_type: "image"
+          },
+          (error, result) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+
+        stream.end(req.file.buffer);
+      });
+
+      coverImage = result.secure_url;
+    }
+
+    // Create book
+    const book = new Book({
+      title,
+      author,
+      quantity,
+      barcode,
+      coverImage
+    });
+
+    await book.save();
+
+    res.status(201).json({
+      message: "Book added successfully",
+      book
+    });
+
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({
+      message: "Failed to add book"
+    });
   }
-  const book = new Book({
-    title,
-    author,
-    quantity,
-    barcode
-  });
-
-  await book.save();
-
-  res.status(201).json({ message: "Book added successfully" });
 };
+
 
 const getBooks = async (req, res) => {
   const books =await Book.find();
@@ -401,105 +457,32 @@ const approveStudent = async (req, res) => {
 
     // Send approval email
     await sendEmail(
-      student.email,
-      
-      "Welcome to Edwin's Library",
+  student.email,
+  "Welcome to Edwin's Library",
+  libraryEmailTemplate({
+    greeting: `Hello ${student.name},`,
 
-      `
-      <div style="
-        font-family: Arial, sans-serif;
-        background: #000000;
-        padding: 40px;
-        color: #9be931;
-      ">
+    message: `
+      Your registration has been approved successfully.
+      You can now log in to Edwin's Library.
+    `,
 
-        <div style="
-          max-width: 600px;
-          background: #111111;
-          margin: auto;
-          border-radius: 12px;
-          overflow: hidden;
-          border: 1px solid #9be931;
-          box-shadow: 0 0 20px rgba(155, 233, 49, 0.3);
-        ">
+    details: [
+      {
+        label: "USN",
+        value: student.usn
+      },
+      {
+        label: "Default Password",
+        value: student.usn
+      }
+    ],
 
-          <div style="
-            background: #9be931;
-            color: #000000;
-            padding: 25px;
-            text-align: center;
-          ">
-            <h1>Edwin's Library</h1>
-          </div>
+    buttonText: "Login to Edwin's Library",
 
-          <div style="padding: 30px;">
-
-            <h2>Hello ${student.name},</h2>
-
-            <p>
-              Your registration has been approved successfully.
-            </p>
-
-            <div style="
-              background: #0a0a0a;
-              border: 1px solid #9be931;
-              padding: 20px;
-              border-radius: 10px;
-              margin-top: 20px;
-            ">
-
-              <p>
-                <strong>USN:</strong> ${student.usn}
-              </p>
-
-              <p>
-                <strong>Default Password:</strong> ${student.usn}
-              </p>
-
-            </div>
-
-            <p style="
-              margin-top: 20px;
-              color: #9ca3af;
-            ">
-              Please change your password after first login.
-            </p>
-
-            <div style="
-              text-align:center;
-              margin-top:30px;
-            ">
-              <a href="#"
-                 style="
-                   background:#00ff88;
-                   color:#000000;
-                   padding:12px 24px;
-                   border-radius:8px;
-                   text-decoration:none;
-                   display:inline-block;
-                   font-weight:bold;
-                 ">
-                 Login to Edwin's Library
-              </a>
-            </div>
-
-          </div>
-
-          <div style="
-            background:#0a0a0a;
-            text-align:center;
-            padding:15px;
-            font-size:14px;
-            color:#9ca3af;
-            border-top:1px solid #9be931;
-          ">
-            Edwin's Library Management System
-          </div>
-
-        </div>
-      </div>
-      `
-    );
+    buttonUrl: "http://localhost:5173/auth"
+  })
+);
 
     res.status(200).json({
       message: "Student approved successfully"
@@ -536,6 +519,26 @@ const getPendingStudents = async (req, res) => {
     });
   }
 };  
+const getApprovedStudents = async (req, res) => {
+  try {
+
+    const students = await User.find({
+      isApproved: true,
+      role: "student"
+    }).select("-password");
+
+    res.status(200).json(students);
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      message: "Server error"
+    });
+
+  }
+};
 
 
 const changePassword = async (req, res) => {

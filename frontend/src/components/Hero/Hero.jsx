@@ -1,5 +1,7 @@
 import { motion } from "framer-motion"
 
+import { useNavigate } from "react-router-dom"
+
 import MagneticButton from "../MagneticButton"
 
 import {
@@ -13,6 +15,8 @@ import Reveal from "../Reveal"
 import Parallax from "../Parallax"
 
 function Hero() {
+
+  const navigate = useNavigate()
 
   return (
 
@@ -291,7 +295,7 @@ function Hero() {
           {/* PRIMARY BUTTON */}
 
           <MagneticButton
-
+            onClick={() => navigate("/auth")}
             className="
               group
 

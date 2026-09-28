@@ -1,6 +1,6 @@
 import { useRef } from "react"
 
-function MagneticButton({ children, className = "" }) {
+function MagneticButton({ children, className = "" , onClick}) {
 
   const buttonRef = useRef(null)
 
@@ -31,6 +31,8 @@ function MagneticButton({ children, className = "" }) {
 
     <button
       ref={buttonRef}
+
+      onClick={onClick}
 
       onMouseMove={handleMouseMove}
 

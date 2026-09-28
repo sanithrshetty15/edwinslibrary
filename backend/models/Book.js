@@ -1,16 +1,33 @@
-const mongoose =  require("mongoose");
-
+const mongoose = require("mongoose")
 
 const bookSchema = new mongoose.Schema({
-    title: String,
-    author: String,
-    quantity: Number,
-    barcode: {
-        type: String,
-        unique: true
-    }
-});
+  title: {
+    type: String,
+    required: true
+  },
 
-const Book = mongoose.model("Book", bookSchema);
+  author: {
+    type: String,
+    required: true
+  },
 
-module.exports = Book;
+  quantity: {
+    type: Number,
+    required: true
+  },
+
+  barcode: {
+    type: String,
+    unique: true,
+    required: true
+  },
+
+  coverImage: {
+    type: String,
+    default: ""
+  }
+})
+
+const Book = mongoose.model("Book", bookSchema)
+
+module.exports = Book

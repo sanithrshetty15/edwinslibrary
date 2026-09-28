@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { registerUser, loginUser, sendOtp, verifyOtp, addBook, getBooks, issueBook, returnBook, getIssuedBooks, requestBook, approveStudent, getPendingStudents, rejectStudent , changePassword } = require("../controllers/authController");
+const { registerUser, loginUser, sendOtp, verifyOtp, addBook, getBooks, issueBook, returnBook, getIssuedBooks, requestBook, approveStudent, getPendingStudents, getApprovedStudents, rejectStudent , changePassword } = require("../controllers/authController");
 const { model } = require("mongoose");
 const { protect, admin } = require("../middleware/authMiddleware");
+const upload = require("../middleware/upload");
 const User = require("../models/User");
 
 
@@ -25,7 +26,13 @@ router.post("/admin/send-otp", sendOtp);
 
 router.post("/admin/verify-otp", verifyOtp);
 
-router.post("/book/add", protect, admin, addBook);
+router.post(
+  "/book/add",
+  protect,
+  admin,
+  upload.single("coverImage"),
+  addBook
+);
 
 router.get("/books", protect, getBooks);
 
