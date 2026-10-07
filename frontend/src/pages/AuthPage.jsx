@@ -154,7 +154,16 @@ const handleRegister = async () => {
     toast.success(
       res.data.message || "Registration successful"
     )
-
+    setName("")
+setEmail("")
+setDepartment("")
+setSection("")
+setYear("")
+setUsn("")
+setUsnNumber("")
+setPhone("")
+setPassword("")
+setAgreed(false)
     setActiveTab("login")
 
   } catch (error) {
